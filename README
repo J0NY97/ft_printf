@@ -1,0 +1,71 @@
+
+-------di---------
+	d = int
+ll	d = long long int
+l	d = long int
+hh	d = signed char
+h	d = short int
+
+
+-------uoxX--------
+	u = unsigned int
+hh	u = unsigned char
+h	u = unsigned short int
+l	u = unsigned long int
+ll	u = unsigned long long int
+
+---------f---------
+	f = double
+L	f = long double
+
+---------c---------
+	c = int
+
+---------s---------
+	s = char *
+
+---------p---------
+	p = void *
+
+
+--------FLAGS---------
+	- = any
+			put spaces on the right rather than left
+	+ = dif
+	' ' = ignore?
+	# = o
+			everything that is not 0 make zero
+		x
+			everything that is not 0 make 0x
+		X
+			everything that is not 0 make 0X
+		f
+			if whole number put decimal (6 0s?)
+	0 = diouxXf
+
+----------WIDTH--------
+	# = min chars printed (all?)
+	* = ???do we have to do this???
+
+--------PRECISiON---------
+	.# = d,i,o,u,x,X
+			min numbers printed
+				if numlen < # pad with 0 on the left
+		 f
+		 	max numbers printed after decimal
+	.* = i hope we dont have to do this
+
+--------------ARRAY---------------
+ * arr[0] = flags;
+ * arr[1] = width;
+ * arr[2] = precision;
+ * arr[3] = length;
+ * arr[4] = specifier;
+ * arr[5] = len;
+
+ none = -1
+ ll = 1
+ l = 2
+ hh = 3
+ h = 4
+ L = 5
