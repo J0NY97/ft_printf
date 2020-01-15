@@ -41,6 +41,7 @@ void	ft_puts(int *arr, va_list ap)
 		zero = 1;
 	}
 	len = arr[2] == -1 || arr[2] >= (int)ft_strlen(str) ? ft_strlen(str) : arr[2];
+	arr[2] == 0 ? len = 0 : 0;
 	spaces = arr[1] - len;
 	arr[0] != '-' ? ft_putnchars(spaces, ' ') : 0;
 	ft_putnstr(str, len);

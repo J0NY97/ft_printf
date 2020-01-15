@@ -19,7 +19,7 @@ void	ft_putllnbr(long long int n)
 		ft_putstr("9223372036854775807");
 		return ;
 	}
-	else if (n == -9223372036854775808)
+	else if (n < -9223372036854775807)
 	{
 		ft_putstr("9223372036854775808");
 		return ;

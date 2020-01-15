@@ -14,6 +14,7 @@
 
 static void	ft_printuox(unsigned long long int nbr, int *arr)
 {
+	arr[0] == ' ' && nbr > 0 ? write (1, " ", 1) : 0;
 	arr[4] == 'u' ? ft_putuint(nbr) : 0;
 	arr[4] == 'o' ? ft_putoctal(nbr) : 0;
 	arr[4] == 'x' ? ft_puthex(nbr, 0) : 0;
@@ -42,10 +43,12 @@ void		ft_putuox(unsigned long long int nbr, int len, int *arr)
 	{
 		arr[0] == '0' ? ft_putnchars(spaces, '0') : 0;
 		arr[0] != '0' && !(arr[0] == '#' && arr[2] == 0) ? ft_putnchars(spaces, ' ') : 0;
-		arr[0] == '#' ? ft_puthashtag(arr) : 0;
+		arr[0] == '#' && nbr != 0 ? ft_puthashtag(arr) : 0;
 		arr[0] == '+' ? ft_putchar('+') : 0;
 		ft_putnchars(padding, '0');
 		arr[0] == '#' && arr[2] == 0 ? ft_putnchars(spaces, '0') : 0;
+		arr[0] == '#' && (nbr == 0 && (arr[2] != 0 || arr[4] == 'o'))
+		? ft_printuox(nbr, arr) : 0;
 		nbr != 0 ? ft_printuox(nbr, arr) : 0;
 	}
 	else
@@ -57,5 +60,6 @@ void		ft_putuox(unsigned long long int nbr, int len, int *arr)
 	arr[5] += (spaces > 0 ? spaces : 0) + (padding > 0 ? padding : 0) +
 	(arr[2] == 0 && arr[0] != '#' ? 0 : len) +
 	(arr[0] == '#' && nbr != 0 && (arr[4] == 'x' || arr[4] == 'X') ? 2 : 0) +
-	(arr[0] == '#' && nbr != 0 && arr[4] == 'o' && nbr != 0 ? 1 : 0);
+	(arr[0] == '#' && nbr != 0 && arr[4] == 'o' ? 1 : 0);
+	arr[5] -= arr[2] == 0 && arr[0] == '#' && arr[4] != 'o' ? len : 0;
 }

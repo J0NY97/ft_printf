@@ -31,6 +31,7 @@ static void	set_precision(const char *fmt, int *i, int *arr, va_list ap)
 {
 	ft_isdigit(fmt[*i + 1]) || fmt[*i + 1] == '*' ? *i += 1 : 0;
 	fmt[*i] == '*' ? arr[2] = va_arg(ap, int) : 0;
+	arr[2] = (fmt[*i] == '*' && arr[2] != -1 ? arr[2] : -1);
 	fmt[*i] != '*' && ft_isdigit(fmt[*i]) ?
 						arr[2] = ft_atoi(&fmt[*i]) : 0;
 	fmt[*i] != '*' && !ft_isdigit(fmt[*i]) ? arr[2] = 0 : 0;
@@ -50,7 +51,7 @@ static void	set_length(const char *fmt, int *i, int *arr)
 
 static void set_flags(const char *fmt, int *i, int *arr)
 {
-	arr[0] == '#' && fmt[*i] == '0' ? arr[2] = 0 : 0;
+	ft_strchr("-+#0", arr[0]) && fmt[*i] == '0' ? arr[2] = 0 : 0;
 	arr[0] == -1 || arr[0] == ' ' ? arr[0] = fmt[*i] : 0;
 }
 

@@ -56,7 +56,7 @@ void	flag_uox(int *arr, va_list ap)
 	arr[4] == 'u' ? len = ft_baselen(nbr, 10) : 0;
 	arr[4] == 'o' ? len = ft_baselen(nbr, 8) : 0;
 	arr[4] == 'x' || arr[4] == 'X' ? len = ft_baselen(nbr, 16) : 0;
-	// added this line could have broken something else
+	// added this line, could have broken something else
 	!(arr[2] == '0' && nbr == 0) ? ft_putuox(nbr, len, arr) : 0;
 	arr[2] == -1 && nbr == 0 && arr[0] == -1 ? ft_putchar('0') : 0;
 }

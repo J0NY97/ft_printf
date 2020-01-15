@@ -712,7 +712,6 @@ int main(void)
 	printf(" {%d}\n", result);
 	result = ft_printf("{%.*s}", -5, "42");
 	printf(" {%d}\n", result);
-
 	result = printf("% d", -42);
 	printf("|%d|\n", result);
 	result = ft_printf("% d", -42);
@@ -721,20 +720,75 @@ int main(void)
 	printf("|%d|\n", result);
 	result = ft_printf("%   d", -42);
 	ft_printf("|%d|\n", result);
-
 	result = printf("%#u", 0);
 	printf("{%d}\n", result);
 	result = ft_printf("%#u", 0);
 	printf("{%d}\n", result);
-
 	result = printf("%#o", 0);
 	printf("{%d}\n", result);
 	result = ft_printf("%#o", 0);
 	printf("{%d}\n", result);
-
 	result = printf("%#x", 0);
 	printf("{%d}\n", result);
 	result = ft_printf("%#x", 0);
 	printf("{%d}\n", result);
+
+	printf("-----------new-------------\n");
+	result = printf("{% %}");
+	printf(" {%d}\n", result);
+	result = ft_printf("{% %}");
+	printf(" {%d}\n", result);
+	result = printf("s: %s, p: %p, d:%d", "a string", &test_simple_mix, 42);
+	printf(" {%d}\n", result);
+	result = ft_printf("s: %s, p: %p, d:%d", "a string", &test_simple_mix, 42);
+	printf(" {%d}\n", result);
+	result = printf("%ld%ld", 0l, 42l);
+	printf(" {%d}\n", result);
+	result = ft_printf("%ld%ld", 0l, 42l);
+	printf(" {%d}\n", result);
+	result = printf("%lld%lld", 0ll, 42ll);
+	printf(" {%d}\n", result);
+	result = ft_printf("%lld%lld", 0ll, 42ll);
+	printf(" {%d}\n", result);
+	result = printf("%hd%hd", (short int)0, (short int)42);
+	printf(" {%d}\n", result);
+	result = ft_printf("%hd%hd", (short int)0, (short int)42);
+	printf(" {%d}\n", result);
+	result = printf("%hhi%hhi", 0, 42);
+	printf(" {%d}\n", result);
+	result = ft_printf("%hhi%hhi", 0, 42);
+	printf(" {%d}\n", result);
+	result = printf("%#o", 42);
+	printf(" {%d}\n", result);
+	result = ft_printf("%#o", 42);
+	printf(" {%d}\n", result);
+	result = printf("{% 03d}", 0);
+	printf(" {%d}\n", result);
+	result = ft_printf("{% 03d}", 0);
+	printf(" {%d}\n", result);
+	result = printf("%9.2p", 1234);
+	printf(" {%d}\n", result);
+	result = ft_printf("%9.2p", 1234);
+	printf(" {%d}\n", result);
+	result = printf("%#.3o", 1);
+	printf(" {%d}\n", result);
+	result = ft_printf("%#.3o", 1);
+	printf(" {%d}\n", result);
+	result = printf("%#.o", 42);
+	printf(" {%d}\n", result);
+	result = ft_printf("%#.o", 42);
+	printf(" {%d}\n", result);
+	result = printf("{%.*s}", 0, "42");
+	printf(" {%d}\n", result);
+	result = ft_printf("{%.*s}", 0, "42");
+	printf(" {%d}\n", result);
+	result = printf("%*.*d", 0, 3, 0);
+	printf(" {%d}\n", result);
+	result = ft_printf("%*.*d", 0, 3, 0);
+	printf(" {%d}\n", result);
+	result = printf("{%*3d}", 5, 0);
+	printf(" {%d}\n", result);
+	result = ft_printf("{%*3d}", 5, 0);
+	printf(" {%d}\n", result);
 	return (0);
 }

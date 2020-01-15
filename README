@@ -69,3 +69,10 @@ L	f = long double
  hh = 3
  h = 4
  L = 5
+
+ -------------TODO--------------
+ /* These lines should be added to all flags... currently only in putdi */
+ // if this line is false you should also remove one from arr[5]
+	arr[0] == ' ' && nbr > 0 ? write (1, " ", 1) : 0;
+	arr[0] == ' ' && nbr < 0 ? arr[5]-- : 0;
+
