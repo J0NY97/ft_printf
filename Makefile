@@ -32,7 +32,7 @@ SRCS = ./ft_printf.c\
 		./ft_putnstr.c\
 		./main.c
 OBJS = $(SRCS.c=.o)
-LIBS = ../libft/libft.a
+LIBS = ./libft/libft.a
 
 all: $(NAME)
 

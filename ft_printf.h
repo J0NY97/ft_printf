@@ -14,7 +14,7 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include "../libft/libft.h"
+# include "./libft/libft.h"
 # include <stdio.h> // remove this
 
 int				ft_printf(const char *restrict format, ...);
