@@ -487,6 +487,8 @@ int main(void)
 	long long int LLONG_MAX = 9223372036854775807;
 	long long int LLONG_MIN = -9223372036854775808;
 	long int LONG_MIN = -2147483648;
+	unsigned long int ULONG_MAX = 4294967295;
+	unsigned long long int ULLONG_MAX = 18446744073709551615;
 	// printf("%p\n", 0);
 	// ft_printf("%p\n", 0);
 	// printf("%d\n", -42);
@@ -790,5 +792,36 @@ int main(void)
 	printf(" {%d}\n", result);
 	result = ft_printf("{%*3d}", 5, 0);
 	printf(" {%d}\n", result);
+	printf("------------EVEN NEWER------------\n");
+	result = printf("%p", 0);
+	printf(" {%d}\n", result);
+	result = ft_printf("%p", 0);
+	printf(" {%d}\n", result);
+	result = printf("%lu, %lu", 0ul, ULONG_MAX);
+	printf(" {%d}\n", result);
+	result = ft_printf("%lu, %lu", 0ul, ULONG_MAX);
+	printf(" {%d}\n", result);
+	result = printf("%llu, %llu", 0llu, ULLONG_MAX);
+	printf(" {%d}\n", result);
+	result = ft_printf("%llu, %llu", 0llu, ULLONG_MAX);
+	printf(" {%d}\n", result);
+	result = printf("{%5p}", 0);
+	printf(" {%d}\n", result);
+	result = ft_printf("{%5p}", 0);
+	printf(" {%d}\n", result);
+	result = printf("{% 03d}", 0);
+	printf(" {%d}\n", result);
+	result = ft_printf("{% 03d}", 0);
+	printf(" {%d}\n", result);
+	result = printf("%2.9p", 1234);
+	printf(" {%d}\n", result);
+	result = ft_printf("%2.9p", 1234);
+	printf(" {%d}\n", result);
+	result = printf("{%.*d}", 0, 42);
+	printf(" {%d}\n", result);
+	result = ft_printf("{%.*d}", 0, 42);
+	printf(" {%d}\n", result);
+
+	ft_printf("\x1b[32mhello World");
 	return (0);
 }

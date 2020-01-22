@@ -63,7 +63,7 @@ static void	ft_putdipos(long long int nbr, int len, int *arr)
 	{
 		arr[0] == '0' && arr[2] <= 0 ? ft_putnchars(spaces, '0') : 0;
 		arr[0] == '0' && arr[2] > 0 ? ft_putnchars(spaces, ' ') : 0;
-		arr[0] != '0' && nbr != 0 ? ft_putnchars(spaces, ' ') : 0;
+		arr[0] != '0' && arr[2] != 0 ? ft_putnchars(spaces, ' ') : 0;
 		arr[0] == '+' ? ft_putchar('+') : 0;
 		ft_putnchars(padding, '0');
 		arr[0] == '+' && arr[2] == 0 ? ft_putnchars(spaces, '0') : 0;

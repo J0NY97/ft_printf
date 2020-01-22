@@ -25,16 +25,16 @@ void	ft_putp(int *arr, va_list ap)
 	spaces = arr[1] - (padding > 0 ? padding : len) - 2;
 	arr[0] != '-' ? ft_putnchars(spaces, ' ') : 0;
 	ft_putstr("0x");
-	nbr != 0 && arr[2] > 0 && arr[1] > arr[2] ?
+	nbr != 0 && arr[2] > 0 ?
 		ft_putnchars(padding, '0') : 0;
 	if ((arr[2] == '0' && nbr != 0) || (arr[2] != 0))
 	{
 		ft_putadr(nbr);
-		arr[5] += len + (nbr != 0 ? 2 : 0);
+		arr[5] += len + 2 + padding;
 	}
 	else
 		arr[5] += 2 + (arr[2] != -1 ? arr[2] : 0);
-	nbr == 0 && arr[2] != -1 ? ft_putnchars(arr[2], '0') : 0;
+	nbr == 0 && arr[2] != -1 ? ft_putnchars(padding, '0') : 0;
 	arr[0] == '-' ? ft_putnchars(spaces, ' ') : 0;
 	arr[5] += spaces > 0 ? spaces : 0;
 }

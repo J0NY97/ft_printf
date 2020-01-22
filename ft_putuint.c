@@ -16,8 +16,8 @@ void	ft_putuint(unsigned long long int n)
 {
 	if (n >= 10)
 	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
+		ft_putuint(n / 10);
+		ft_putuint(n % 10);
 	}
 	else
 		ft_putchar(n + '0');
