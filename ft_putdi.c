@@ -77,8 +77,8 @@ static void	ft_putdipos(long long int nbr, int len, int *arr)
 		ft_putllnbr(nbr);
 		ft_putnchars(spaces, ' ');
 	}
-	arr[5] += (padding >= 0 ? padding : 0) + (spaces >= 0 ? spaces : 0) +
-	(arr[2] == 0 && arr[0] != '+' ? 0 : len) +
+	arr[5] += (padding > 0 ? padding : 0) + (spaces > 0 ? spaces : 0) +
+	(arr[2] == 0 && arr[0] != '+' && nbr == 0 ? 0 : len) +
 	(arr[0] == '+' ? 1 : 0);
 }
 

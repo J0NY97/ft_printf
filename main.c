@@ -821,7 +821,9 @@ int main(void)
 	printf(" {%d}\n", result);
 	result = ft_printf("{%.*d}", 0, 42);
 	printf(" {%d}\n", result);
-
-	ft_printf("\x1b[32mhello World");
+	result = printf("{%.*s}", -5, "42");
+	printf(" {%d}\n", result);
+	result = ft_printf("{%.*s}", -5, "42");
+	printf(" {%d}\n", result);
 	return (0);
 }
