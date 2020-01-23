@@ -30,7 +30,10 @@ static void	set_width(const char *fmt, int *i, int *arr, va_list ap)
 static void	set_precision(const char *fmt, int *i, int *arr, va_list ap)
 {
 	ft_isdigit(fmt[*i + 1]) || fmt[*i + 1] == '*' ? *i += 1 : 0;
-	fmt[*i] == '*' ? arr[2] = va_arg(ap, int) : 0;
+	fmt[*i] == '*' && arr[2] != -2 ? arr[2] = va_arg(ap, int) : 0;
+	fmt[*i] == '*' && arr[2] == -2 ? (void)va_arg(ap, int) : 0;
+	if (arr[2] == -2)
+		return ;
 	arr[2] = (fmt[*i] == '*' && arr[2] != -1 ? arr[2] : -1);
 	fmt[*i] != '*' && ft_isdigit(fmt[*i]) ?
 						arr[2] = ft_atoi(&fmt[*i]) : 0;
@@ -52,7 +55,9 @@ static void	set_length(const char *fmt, int *i, int *arr)
 static void set_flags(const char *fmt, int *i, int *arr)
 {
 	ft_strchr("-+#0", arr[0]) && fmt[*i] == '0' ? arr[2] = 0 : 0;
-	arr[0] == -1 || arr[0] == ' ' ? arr[0] = fmt[*i] : 0;
+	arr[0] == ' ' ? arr[2] = -2 : 0;
+	arr[0] == -1 || (arr[0] == '0' && fmt[*i] == '-') ? arr[0] = fmt[*i] : 0;
+	arr[2] == -2 ? arr[0] = fmt[*i] : 0;
 }
 
 int			get_values(const char *fmt, int *i, int *arr, va_list ap)

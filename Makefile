@@ -5,13 +5,13 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jsalmi <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/12/11 12:43:34 by jsalmi            #+#    #+#              #
-#    Updated: 2019/12/13 15:48:23 by jsalmi           ###   ########.fr        #
+#    Created: 2019/12/13 15:52:37 by jsalmi            #+#    #+#              #
+#    Updated: 2019/12/18 16:15:53 by jsalmi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
-SRC = ./ft_printf.c\
+NAME = ft_printf
+SRCS = ./ft_printf.c\
 		./flag_thingys.c\
 		./ft_llnbrlen.c\
 		./ft_putllnbr.c\
@@ -30,22 +30,20 @@ SRC = ./ft_printf.c\
 		./ft_putf.c\
 		./ft_putfloat.c\
 		./ft_putnstr.c\
-		./libft/*.c
-OBJ	= $(SRC:.c=.o)
-FLAGS = -Wall -Wextra -Werror
+		./main.c
+OBJS = $(SRCS.c=.o)
+LIBS = ./libft/libft.a
 
 all: $(NAME)
 
 $(NAME):
-	gcc $(FLAGS) -c -I ./libft $(SRC)
-	ar rc $(NAME) *.o
-	ranlib $(NAME)
+	gcc -o $(NAME) $(SRCS) $(LIBS)
 
 clean:
-	rm -f *.o
+	/bin/rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	/bin/rm -f $(NAME)
 
 re: fclean all
 

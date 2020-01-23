@@ -197,8 +197,8 @@ int main(void)
 	// printf("%*d\n", 15, 8);
 	// ft_printf("%*d\n", 15, 8);
 	// ft_printf("--------------------------------\n");
-	// printf("%.4s\n", NULL);
-	// ft_printf("%.4s\n", NULL);
+	printf("%.4s\n", NULL);
+	ft_printf("%.4s\n", NULL);
 	// printf("42%13lc42\n", 'j');
 	// ft_printf("42%13lc42\n", 'j');
 	// ft_printf("----------RETURN VALUES-------------\n");
@@ -764,10 +764,6 @@ int main(void)
 	printf(" {%d}\n", result);
 	result = ft_printf("%#o", 42);
 	printf(" {%d}\n", result);
-	result = printf("{% 03d}", 0);
-	printf(" {%d}\n", result);
-	result = ft_printf("{% 03d}", 0);
-	printf(" {%d}\n", result);
 	result = printf("%9.2p", 1234);
 	printf(" {%d}\n", result);
 	result = ft_printf("%9.2p", 1234);
@@ -809,10 +805,6 @@ int main(void)
 	printf(" {%d}\n", result);
 	result = ft_printf("{%5p}", 0);
 	printf(" {%d}\n", result);
-	result = printf("{% 03d}", 0);
-	printf(" {%d}\n", result);
-	result = ft_printf("{% 03d}", 0);
-	printf(" {%d}\n", result);
 	result = printf("%2.9p", 1234);
 	printf(" {%d}\n", result);
 	result = ft_printf("%2.9p", 1234);
@@ -824,6 +816,72 @@ int main(void)
 	result = printf("{%.*s}", -5, "42");
 	printf(" {%d}\n", result);
 	result = ft_printf("{%.*s}", -5, "42");
+	printf(" {%d}\n", result);
+
+	result = printf("% 04.1d", 100);
+	printf(" {%d}\n", result);
+	result = ft_printf("% 04.1d", 100);
+	printf(" {%d}\n", result);
+	result = printf("{% +d}", 42);
+	printf(" {%d}\n", result);
+	result = ft_printf("{% +d}", 42);
+	printf(" {%d}\n", result);
+	result = printf("{%0-3.3d}", 0);
+	printf(" {%d}\n", result);
+	result = ft_printf("{%0-3.3d}", 0);
+	printf(" {%d}\n", result);
+	result = printf("{%0-3d}", 0);
+	printf(" {%d}\n", result);
+	result = ft_printf("{%0-3d}", 0);
+	printf(" {%d}\n", result);
+
+	result = printf("{%-3.3d}", 0);
+	printf(" {%d}\n", result);
+	result = ft_printf("{%-3.3d}", 0);
+	printf(" {%d}\n", result);
+	result = printf("{%-3d}", 0);
+	printf(" {%d}\n", result);
+	result = ft_printf("{%-3d}", 0);
+	printf(" {%d}\n", result);
+	result = printf("{%3.2d}", 0);
+	printf(" {%d}\n", result);
+	result = ft_printf("{%3.2d}", 0);
+	printf(" {%d}\n", result);
+	printf("----newerer than even newer-----\n");
+	result = printf("{% 03d}", 0);
+	printf(" {%d}\n", result);
+	result = ft_printf("{% 03d}", 0);
+	printf(" {%d}\n", result);
+	result = printf("{% 3d}", 0);
+	printf(" {%d}\n", result);
+	result = ft_printf("{% 3d}", 0);
+	printf(" {%d}\n", result);
+
+	result = printf("{% 04d}", 1);
+	printf(" {%d}\n", result);
+	result = ft_printf("{% 04d}", 1);
+	printf(" {%d}\n", result);
+	result = printf("{% 3d}", 1);
+	printf(" {%d}\n", result);
+	result = ft_printf("{% 3d}", 1);
+	printf(" {%d}\n", result);
+
+	result = printf("{%010d}", 42);
+	printf(" {%d}\n", result);
+	result = ft_printf("{%010d}", 42);
+	printf(" {%d}\n", result);
+	result = printf("{%05.*d}", -15, 42);
+	printf(" {%d}\n", result);
+	result = ft_printf("{%05.*d}", -15, 42);
+	printf(" {%d}\n", result);
+
+	result = printf("{%03.2d}", 0);
+	printf(" {%d}\n", result);
+	result = ft_printf("{%03.2d}", 0);
+	printf(" {%d}\n", result);
+	result = printf("{%03.2d}", 1);
+	printf(" {%d}\n", result);
+	result = ft_printf("{%03.2d}", 1);
 	printf(" {%d}\n", result);
 	return (0);
 }

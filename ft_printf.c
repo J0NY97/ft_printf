@@ -42,12 +42,14 @@ int	ft_printf(const char *restrict format, ...)
 			if (!format[i])
 				return (arr[5]);
 			get_values(format, &i, arr, ap);
+			//printf("\nflag: %d\nwidth %d\nprecision: %d\nlength: %d\nspecifier: %c\n",
+			//arr[0], arr[1], arr[2], arr[3], arr[4]);
+
 			// this space thingy doesnt work because of retarded shit so... i have to fix this somehow.. GREAT!
 			// maybe fixed... probably knot
-			arr[0] == ' ' && arr[4] != 37 ? arr[5]++ : 0;
+			(arr[0] == ' ' || arr[2] == -2) && arr[4] != 37 && arr[0] != '+'
+				? arr[5]++ : 0;
 			arr[4] != -1 ? flag_thingys(arr, ap) : 0;
-			//printf("\nflag: %c\nwidth %d\nprecision: %d\nlength: %d\nspecifier: %c\n",
-			//arr[0], arr[1], arr[2], arr[3], arr[4]);
 		}
 		else
 		{
