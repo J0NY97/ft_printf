@@ -17,9 +17,24 @@ void	flag_thingys(int *arr, va_list ap)
 	ft_strchr("csp", arr[4]) ? flag_csp(arr, ap) : 0;
 	ft_strchr("di", arr[4]) ? flag_di(arr, ap) : 0;
 	ft_strchr("uoxX", arr[4]) ? flag_uox(arr, ap) : 0;
-	arr[4] == '%' ? ft_putchar('%') : 0;
-	arr[4] == '%' ? arr[5]++ : 0;
+	arr[4] == '%' ? flag_procent(arr) : 0;
 	arr[4] == 'f' ? flag_f(arr, ap) : 0;
+}
+
+void	flag_procent(int *arr)
+{
+	if (arr[0] != '-')
+	{
+		ft_putnchars(arr[1] - 1, ' ');
+		ft_putchar('%');
+	}
+	else
+	{
+		ft_putchar('%');
+		ft_putnchars(arr[1] - 1, ' ');
+	}
+	arr[5]++;
+	arr[5] += (arr[1] > 0 ? arr[1] - 1 : 0);
 }
 
 void	flag_csp(int *arr, va_list ap)
@@ -56,8 +71,8 @@ void	flag_uox(int *arr, va_list ap)
 	arr[4] == 'u' ? len = ft_baselen(nbr, 10) : 0;
 	arr[4] == 'o' ? len = ft_baselen(nbr, 8) : 0;
 	arr[4] == 'x' || arr[4] == 'X' ? len = ft_baselen(nbr, 16) : 0;
-	// added this line, could have broken something else
-	!(arr[2] == '0' && nbr == 0) ? ft_putuox(nbr, len, arr) : 0;
+	nbr == 0 && arr[2] == 0 && arr[0] != '#' ? len = 0 : 0;
+	ft_putuox(nbr, len, arr);
 	arr[2] == -1 && nbr == 0 && arr[0] == -1 ? ft_putchar('0') : 0;
 }
 

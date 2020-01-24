@@ -55,6 +55,8 @@ static void	set_length(const char *fmt, int *i, int *arr)
 static void set_flags(const char *fmt, int *i, int *arr)
 {
 	ft_strchr("-+#0", arr[0]) && fmt[*i] == '0' ? arr[2] = 0 : 0;
+	// added this because things, only using this if there are more than 1 flag
+	ft_strchr("-+#0", arr[0]) ? arr[6] = fmt[*i] : 0;
 	arr[0] == ' ' ? arr[2] = -2 : 0;
 	arr[0] == -1 || (arr[0] == '0' && fmt[*i] == '-') ? arr[0] = fmt[*i] : 0;
 	arr[2] == -2 ? arr[0] = fmt[*i] : 0;

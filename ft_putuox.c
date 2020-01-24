@@ -35,11 +35,12 @@ void		ft_putuox(unsigned long long int nbr, int len, int *arr)
 
 	spaces = arr[1] - ((arr[2] > len) ? arr[2] : len) -
 	(arr[0] == '+' ? 1 : 0);
-	spaces -= (arr[0] == '#' && (arr[4] == 'x' || arr[4] == 'X')) ? 2 : 0;
-	spaces -= (arr[0] == '#' && arr[4] == 'o' && arr[2] == -1) ? 1 : 0;
+	spaces -= ((arr[0] == '#' || arr[6] == '#') && (arr[4] == 'x' || arr[4] == 'X')) ? 2 : 0;
+	spaces -= (arr[0] == '#' || arr[6] == '#') && arr[4] == 'o' && arr[2] == -1 ? 1 : 0;
+	spaces -= (arr[0] == '#' || arr[6] == '#') && arr[4] == 'o' && arr[2] == 0 ? 1 : 0;
 	padding = arr[2] - len;
 	padding -= (arr[0] == '#' && arr[4] == 'o' && arr[2] != -1) ? 1 : 0;
-	if (arr[0] != '-')
+	if (arr[0] != '-' && arr[6] != '-')
 	{
 		arr[0] == '0' ? ft_putnchars(spaces, '0') : 0;
 		arr[0] != '0' && !(arr[0] == '#' && arr[2] == 0) ? ft_putnchars(spaces, ' ') : 0;
@@ -53,13 +54,25 @@ void		ft_putuox(unsigned long long int nbr, int len, int *arr)
 	}
 	else
 	{
+		//printf("len: %d\n", len);
+		//printf("spaces: %d\n", spaces);
+		arr[0] == '#' || arr[6] == '#' ? ft_puthashtag(arr) : 0;
 		ft_putnchars(padding, '0');
 		ft_printuox(nbr, arr);
 		ft_putnchars(spaces, ' ');
 	}
+	// printf("Len: %d\n", len);
+	// printf("Yes: %d\n", (arr[0] == '#' && nbr != 0 && (arr[4] == 'x' || arr[4] == 'X') ? 2 : 0));
+	// printf("Spaces: %d\n", spaces);
+	// printf("arr[2]: %d\n", arr[2]);
+	// printf("Yes or no: %d\n", (arr[2] == 0 && arr[0] == '#' && arr[4] != 'o' ? len : 0));
 	arr[5] += (spaces > 0 ? spaces : 0) + (padding > 0 ? padding : 0) +
-	(arr[2] == 0 && arr[0] != '#' ? 0 : len) +
+	(arr[2] == 0 && arr[0] != '#' && (arr[0] != '-' && arr[6] != '-') ? 0 : len) +
 	(arr[0] == '#' && nbr != 0 && (arr[4] == 'x' || arr[4] == 'X') ? 2 : 0) +
 	(arr[0] == '#' && nbr != 0 && arr[4] == 'o' ? 1 : 0);
-	arr[5] -= arr[2] == 0 && arr[0] == '#' && arr[4] != 'o' ? len : 0;
+	// i have no idea why this needs to be here... to be seen
+	arr[5] -= (arr[2] == 0 && arr[0] == '#' && arr[4] != 'o' && nbr == 0 ? 1 : 0);
+	// probably not true but it fixed what i wanted xd still true 2 hours after (had to edited it though)
+	arr[5] += ((arr[0] == '-' || arr[6] == '-') &&
+				(arr[0] == '#' || arr[6] == '#' ) ? 1 : 0);
 }

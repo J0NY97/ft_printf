@@ -62,6 +62,7 @@ L	f = long double
  * arr[3] = length;
  * arr[4] = specifier;
  * arr[5] = len;
+ * arr[6] = flag2;
 
  arr[2] == -2 ? arr[0] == another flag, but basically that there is a space
 

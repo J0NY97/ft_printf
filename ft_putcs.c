@@ -16,13 +16,16 @@ void	ft_putc(int *arr, va_list ap)
 {
 	int spaces;
 	int len;
+	int c;
 
 	len = 0;
 	spaces = arr[1] - 1;
+	c = va_arg(ap, int);
 	arr[0] != '-' ? ft_putnchars(spaces, ' ') : 0;
-	ft_putchar(va_arg(ap, int));
+	c != 0 ? ft_putchar(c) : 0;
 	arr[0] == '-' ? ft_putnchars(spaces, ' ') : 0;
 	len += spaces > 0 ? spaces + 1 : 1;
+	//c == 0 ? len = 0 : 0;
 	arr[5] += len;
 }
 

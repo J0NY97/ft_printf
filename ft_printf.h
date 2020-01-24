@@ -27,6 +27,7 @@ void			flag_di(int *arr, va_list ap);
 void			flag_csp(int *arr, va_list ap);
 void			flag_uox(int *arr, va_list ap);
 void			flag_f(int *arr, va_list ap);
+void            flag_procent(int *arr);
 /*
 ** Put Things
 */
