@@ -21,12 +21,12 @@ void	ft_putp(int *arr, va_list ap)
 
 	nbr = va_arg(ap, unsigned long);
 	len = ft_baselen(nbr, 16);
-	padding = arr[2] - len > 0 ? arr[2] - len : 0;
+	padding = (arr[2] - len > 0 ? arr[2] - len : 0);
 	spaces = arr[1] - (padding > 0 ? padding : len) - 2;
+	//printf("nbr %d len %d pad: %d spaces %d", nbr, len, padding, spaces);
 	arr[0] != '-' ? ft_putnchars(spaces, ' ') : 0;
 	ft_putstr("0x");
-	nbr != 0 && arr[2] > 0 ?
-		ft_putnchars(padding, '0') : 0;
+	nbr != 0 && arr[2] > 0 ? ft_putnchars(padding, '0') : 0;
 	if ((arr[2] == '0' && nbr != 0) || (arr[2] != 0))
 	{
 		ft_putadr(nbr);

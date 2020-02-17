@@ -54,24 +54,59 @@ static void	set_length(const char *fmt, int *i, int *arr)
 
 static void set_flags(const char *fmt, int *i, int *arr)
 {
-	ft_strchr("-+#0", arr[0]) && fmt[*i] == '0' ? arr[2] = 0 : 0;
-	// added this because things, only using this if there are more than 1 flag
-	ft_strchr("-+#0", arr[0]) ? arr[6] = fmt[*i] : 0;
-	arr[0] == ' ' ? arr[2] = -2 : 0;
-	arr[0] == -1 || (arr[0] == '0' && fmt[*i] == '-') ? arr[0] = fmt[*i] : 0;
-	arr[2] == -2 ? arr[0] = fmt[*i] : 0;
+	if (arr[0] == -1)
+	{
+		arr[0] = fmt[*i];
+		return ;
+	}
+	else if (arr[0] != -1)
+	{
+		if (arr[0] == '0' && fmt[*i] == '-')
+		{
+			arr[0] = '-';
+			return ;
+		}
+		else if (arr[6] == '0' && fmt[*i] == '-')
+		{
+			arr[6] = '-';
+			return ;
+		}
+		if (arr[0] == ' ' && fmt[*i] == '+')
+		{
+			arr[0] = '+';
+			return ;
+		}
+		else if (arr[6] == ' ' && fmt[*i] == '+')
+		{
+			arr[6] = '+';
+			return ;
+		}
+		if (arr[0] == '+' && fmt[*i] == '#')
+		{
+			arr[0] = '#';
+			return ;
+		}
+		else if (arr[6] == '+' && fmt[*i] == '#')
+		{
+			arr[6] = '#';
+			return ;
+		}
+	}
+	if (arr[0] != fmt[*i] && arr[6] == -1)
+		arr[6] = fmt[*i];
 }
 
 int			get_values(const char *fmt, int *i, int *arr, va_list ap)
 {
-	while (!ft_strchr("cspdiouxXf%", fmt[*i]))
+	while (!ft_strchr("cspdiouxXf%", fmt[*i]) && fmt[*i] != '\0')
 	{
 		if (ft_strchr("-+#0 ", fmt[*i]) && fmt[*i - 1] != '.')
 		{
 			set_flags(fmt, i , arr);
 		}
+		// change this is everything has gone to shit
 		if ((ft_isdigit(fmt[*i]) || fmt[*i] == '*') && fmt[*i - 1] != '.' &&
-			(fmt[*i - 1] != '%' || arr[0] != '0') && fmt[*i] != '0')
+			!(fmt[*i - 1] == '%' && (arr[0] == '0' || arr[6] == '0')) && fmt[*i] != '0' && arr[2] < 0)
 		{
 			set_width(fmt, i, arr, ap);
 		}
@@ -81,10 +116,9 @@ int			get_values(const char *fmt, int *i, int *arr, va_list ap)
 			set_length(fmt, i, arr);
 		*i += 1;
 	}
-	// no way these 2 lines work, if you have %*d, -1, 42 for example... -1 is default for nothing
-	// nvm... apparently its not supposed to work with -1 thank god
 	arr[0] == -1 && arr[1] < -1 ? arr[0] = '-' : 0;
+	// wtf is this!
 	arr[1] < -1 ? arr[1] *= -1 : 0;
-	arr[4] = fmt[*i];
+	ft_strchr("cspdiouxXf%", fmt[*i]) && fmt[*i] != '\0' ? arr[4] = fmt[*i] : 0;
 	return (1);
 }

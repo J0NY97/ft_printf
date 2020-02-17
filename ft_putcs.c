@@ -22,10 +22,9 @@ void	ft_putc(int *arr, va_list ap)
 	spaces = arr[1] - 1;
 	c = va_arg(ap, int);
 	arr[0] != '-' ? ft_putnchars(spaces, ' ') : 0;
-	c != 0 ? ft_putchar(c) : 0;
+	ft_putchar(c);
 	arr[0] == '-' ? ft_putnchars(spaces, ' ') : 0;
 	len += spaces > 0 ? spaces + 1 : 1;
-	//c == 0 ? len = 0 : 0;
 	arr[5] += len;
 }
 
@@ -43,7 +42,9 @@ void	ft_puts(int *arr, va_list ap)
 		str = ft_strdup("(null)");
 		zero = 1;
 	}
+	// wtf does this mean
 	arr[2] < -1 ? arr[2] *= -1 : 0;
+	// i think the next 2 lines are the same
 	len = arr[2] == -1 || arr[2] > (int)ft_strlen(str) ? ft_strlen(str) : arr[2];
 	arr[2] == 0 ? len = 0 : 0;
 	spaces = arr[1] - len;

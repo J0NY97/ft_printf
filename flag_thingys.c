@@ -23,9 +23,15 @@ void	flag_thingys(int *arr, va_list ap)
 
 void	flag_procent(int *arr)
 {
+	int spaces;
+
+	spaces = arr[1] - 1;
+	// printf("arr[0]: %c", arr[0]);
+	// printf("arr[1]: %d", arr[1]);
 	if (arr[0] != '-')
 	{
-		ft_putnchars(arr[1] - 1, ' ');
+		arr[0] != '0' ? ft_putnchars(spaces, ' ') : 0;
+		arr[0] == '0' ? ft_putnchars(spaces, '0') : 0;
 		ft_putchar('%');
 	}
 	else
@@ -71,17 +77,21 @@ void	flag_uox(int *arr, va_list ap)
 	arr[4] == 'u' ? len = ft_baselen(nbr, 10) : 0;
 	arr[4] == 'o' ? len = ft_baselen(nbr, 8) : 0;
 	arr[4] == 'x' || arr[4] == 'X' ? len = ft_baselen(nbr, 16) : 0;
-	nbr == 0 && arr[2] == 0 && arr[0] != '#' ? len = 0 : 0;
+	//nbr == 0 && arr[2] == 0 && arr[0] != '#' ? len = 0 : 0;
+	// this needs to be checked so it can handle ' '
+	//(arr[0] == ' ' || arr[6] == ' ') && arr[0] != '#' && arr[6] != '#' && nbr >= 0  ? ft_putchar(' ') : 0;
 	ft_putuox(nbr, len, arr);
-	arr[2] == -1 && nbr == 0 && arr[0] == -1 ? ft_putchar('0') : 0;
 }
 
 void	flag_f(int *arr, va_list ap)
 {
 	long double nbr;
 
-	arr[3] == -1 ? nbr = va_arg(ap, double) : 0;
+	arr[3] == -1 ? nbr = (long double)va_arg(ap, double) : 0;
 	arr[3] == 5 ? nbr = (long double)va_arg(ap, long double) : 0;
 	arr[3] != -1 && arr[3] != 5 ? nbr = va_arg(ap, double) : 0;
+	// take look at this probably not right
+	(arr[0] == ' ' || arr[6] == ' ') && arr[0] != '+' && arr[6] != '+' && nbr >= 0  ? ft_putchar(' ') : 0;
+	(arr[0] == ' ' || arr[6] == ' ') && arr[0] != '+' && arr[6] != '+' && nbr >= 0 ? arr[5]++ : 0;
 	ft_putf(nbr, arr);
 }

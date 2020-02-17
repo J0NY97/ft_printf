@@ -49,7 +49,7 @@ void			ft_putoctal(unsigned long long int nb);
 void			ft_puthex(unsigned long long int nb, int upper);
 void			ft_putuint(unsigned long long int n);
 void			ft_putadr(unsigned long long nb);
-void			ft_putfloat(long double nb, int precision);
+void			ft_putfloat(long double nb, int precision, int zeros);
 void			ft_putnstr(char *str, int len);
 
 #endif
